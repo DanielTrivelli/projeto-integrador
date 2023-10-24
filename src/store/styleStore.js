@@ -24,9 +24,10 @@ export const styleSlicer = createSlice({
         updateStyles: (state) => {
             const newStyleState = {
                 menu: {
-                    paddingTop: state.windowSz.innerHeight <= 740 && !state.deviceTypes.isIPhone13 ? '13vh' : '9.2vh',
+                    // paddingTop: state.windowSz.innerHeight <= 740 && !state.deviceTypes.isIPhone13 ? '13vh' : '9.2vh',
                     appBar: {
-                        backgroundColor: '#113946'
+                        backgroundColor: '#113946',
+                        // height: '100%'
                     }
                 },
                 sections: {
@@ -36,15 +37,17 @@ export const styleSlicer = createSlice({
                     },
                     sx:{
                         width: '100vw',
-                        height: state.windowSz.innerHeight < 710 ? '92vh' : '100vh'
+                        height: '100vh'
                     },
                     grids: {
                         titleGrid: {
                             sx: {
                                 // borderStyle: 'solid',
-                                height: state.deviceTypes.isMobile ? '40px' : `-${100/3}vh`,
-                                paddingTop: state.deviceTypes.isMobile ? '1vh' : '20vh',
-                                paddingLeft: state.deviceTypes.isMobile ? '' : '3vw'
+                                // height: state.deviceTypes.isMobile ? '40px' : `-${100/3}vh`,
+                                // paddingTop: state.deviceTypes.isMobile ? '1vh' : '20vh',
+                                // paddingLeft: state.deviceTypes.isMobile ? '' : '3vw',
+                                display: 'grid',
+                                placeItems: 'center'
                             },
                             xs: 12,
                             sm: 12,
@@ -55,7 +58,7 @@ export const styleSlicer = createSlice({
                             sx: {
                                 // borderStyle: 'solid',
                                 // borderColor: 'green',
-                                position: state.deviceTypes.isMobile ? 'absolute': '',
+                                // position: state.deviceTypes.isMobile ? 'absolute': '',
                                 paddingTop: '5vh',
                                 paddingLeft: '2vw'
                             },
@@ -67,13 +70,19 @@ export const styleSlicer = createSlice({
                     },
                     intro: {
                         backgroundColor: '#FFF2D8',
+                        justifyContent: state.deviceTypes.isMobile ? 'normal' : 'space-evenly',
+                        alignItems: state.deviceTypes.isMobile ? 'normal' : 'center'
                     },
                     project: {
                         backgroundColor: '#EAD7BB',
+                        justifyContent: state.deviceTypes.isMobile ? 'normal' : 'space-evenly',
+                        alignItems: state.deviceTypes.isMobile ? 'normal' : 'center'
                     },
                     model: {
                         backgroundColor: '#BCA37F',
-                        userSelect:'none'
+                        userSelect:'none',
+                        justifyContent: state.deviceTypes.isMobile ? 'normal' : 'space-evenly',
+                        alignItems: state.deviceTypes.isMobile ? 'normal' : 'center'
                     },
                     sectionContentStyle: {
                         intro: {
@@ -86,7 +95,7 @@ export const styleSlicer = createSlice({
                         },
                         model: {
                             width: state.deviceTypes.isMobile ? '90vw' : '40vw',
-                            height: state.deviceTypes.isMobile ? '50vh' : '50vh',
+                            height: state.deviceTypes.isMobile ? '50vh' : '70vh',
                         },
                     }
                 },

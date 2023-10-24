@@ -15,7 +15,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import {MobileView, BrowserView, TabletView} from "react-device-detect";
-import {eventListener} from "../../utils/windowProps";
+import {eventListener, scrollToPs} from "../../utils/windowProps";
 import { changeActiveSection, addSections } from '../../store/sectionStore'
 import {updateWindowSize, updateStyles} from "../../store/styleStore";
 import Section from "../section/section";
@@ -42,11 +42,7 @@ function MenuBar(props) {
 
     const handleChangeSection = (sectionId) => () => {
         if(sectionId !== activeSection){
-            const sectionElement = document.getElementById(sectionId);
-            sectionElement.scrollIntoView({
-                behavior: "smooth",
-                block: 'end',
-            })
+            scrollToPs(document.getElementById(sectionId))
             dispatch(changeActiveSection(sectionId))
         }
     }
@@ -122,9 +118,9 @@ function MenuBar(props) {
     }
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box>
             <CssBaseline />
-            <AppBar component="nav" sx={menuStyles.appBar}>
+            <AppBar position={'sticky'} component="nav" sx={menuStyles.appBar} id={'appBar'}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -174,7 +170,7 @@ function MenuBar(props) {
                 </Drawer>
             </nav>
             <Box component="main">
-                <Toolbar />
+                {/*<Toolbar />*/}
                 {loadContent()}
             </Box>
         </Box>

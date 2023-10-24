@@ -12,3 +12,11 @@ export const eventListener = (action, type, callback) => {
     }
     windowEventListenerType(type, callback);
 }
+
+export const scrollToPs = (element) => {
+    window.scrollTo({
+        top: element.offsetTop - document.getElementById('appBar').offsetHeight,
+        left: 0,
+        behavior: "smooth",
+    })
+}
