@@ -2,7 +2,10 @@ import {createSlice} from '@reduxjs/toolkit'
 
 const defaultState = {
     content: [],
-    activeSection: 'Intro'
+    activeSection: {
+        id: '',
+        yAxis: []
+    }
 }
 
 export const sectionsSlicer = createSlice({
@@ -15,12 +18,29 @@ export const sectionsSlicer = createSlice({
                 if (!alreadyIn.includes(item.id)) {
                     return item[1]
                 }
+                return null
+            })
+        },
+        updateSectionYAxis: (state, action) => {
+            const payload = action.payload
+            state.content = state.content.map(item => {
+                let sectionSettings = {...item}
+                if(payload.section === sectionSettings.id){
+                    sectionSettings = {
+                        ...sectionSettings,
+                        yAxis: payload.yAxis
+                    }
+                }
+                return sectionSettings
             })
         },
         changeActiveSection: (state, action) => {
             const payload = action.payload
-            if(payload !== state.activeSection){
-                state.activeSection = payload
+            if(payload.id !== state.activeSection.id){
+                state.activeSection = {
+                    id: payload.id,
+                    yAxis: [...payload.yAxis]
+                }
             }
         },
         resetDefaultState: (state, action) => {
@@ -30,6 +50,6 @@ export const sectionsSlicer = createSlice({
 })
 
 
-export const { addSections, changeActiveSection, resetDefaultState } = sectionsSlicer.actions
+export const { addSections, updateSectionYAxis, changeActiveSection, resetDefaultState } = sectionsSlicer.actions
 
 export default sectionsSlicer.reducer

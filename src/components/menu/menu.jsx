@@ -19,13 +19,14 @@ import {eventListener, scrollToPs} from "../../utils/windowProps";
 import { changeActiveSection, addSections } from '../../store/sectionStore'
 import {updateWindowSize, updateStyles} from "../../store/styleStore";
 import Section from "../section/section";
+import {getElementYAxis} from "../../utils/axis";
 
 const drawerWidth = 240;
 
 function MenuBar(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = useState(false);
-    const activeSection = useSelector((state) => state.sections.activeSection)
+    const activeSection = useSelector((state) => state.sections.activeSection.id)
     const allSections = useSelector((state) => state.sections.content)
     const deviceType = useSelector((state) => state.styles.deviceTypes)
     const menuStyles = useSelector((state) => state.styles.style.menu)
@@ -42,8 +43,12 @@ function MenuBar(props) {
 
     const handleChangeSection = (sectionId) => () => {
         if(sectionId !== activeSection){
-            scrollToPs(document.getElementById(sectionId))
-            dispatch(changeActiveSection(sectionId))
+            const element = document.getElementById(sectionId)
+            scrollToPs(element)
+            dispatch(changeActiveSection({
+                id: sectionId,
+                yAxis: getElementYAxis(element)
+            }))
         }
     }
 
@@ -54,7 +59,7 @@ function MenuBar(props) {
                 [
                     {name: 'Introdução', id: 'intro'},
                     {name: 'Projeto', id: 'project'},
-                    {name: 'Modelo', id: 'model'}
+                    {name: 'Modelo e Fotos', id: 'modelAndMedia'}
                 ]
             ))
             dispatch(updateStyles());
@@ -170,7 +175,6 @@ function MenuBar(props) {
                 </Drawer>
             </nav>
             <Box component="main">
-                {/*<Toolbar />*/}
                 {loadContent()}
             </Box>
         </Box>

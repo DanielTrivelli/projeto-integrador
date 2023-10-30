@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import {windowSize} from "../utils/windowProps";
 import {isTablet, isMobile, isBrowser, isIPhone13, browserName} from "react-device-detect";
+import {setContentTypographyVariant, setProjectSectionHeight} from "./utils/styleStoreUtils";
 
 const defaultState = {
     deviceTypes: {
@@ -22,12 +23,13 @@ export const styleSlicer = createSlice({
     initialState: defaultState,
     reducers: {
         updateStyles: (state) => {
+            const contentVariantType =  setContentTypographyVariant(state)
+            const projectSectionHeight = setProjectSectionHeight(state)
+
             const newStyleState = {
                 menu: {
-                    // paddingTop: state.windowSz.innerHeight <= 740 && !state.deviceTypes.isIPhone13 ? '13vh' : '9.2vh',
                     appBar: {
                         backgroundColor: '#113946',
-                        // height: '100%'
                     }
                 },
                 sections: {
@@ -42,10 +44,6 @@ export const styleSlicer = createSlice({
                     grids: {
                         titleGrid: {
                             sx: {
-                                // borderStyle: 'solid',
-                                // height: state.deviceTypes.isMobile ? '40px' : `-${100/3}vh`,
-                                // paddingTop: state.deviceTypes.isMobile ? '1vh' : '20vh',
-                                // paddingLeft: state.deviceTypes.isMobile ? '' : '3vw',
                                 display: 'grid',
                                 placeItems: 'center'
                             },
@@ -56,9 +54,6 @@ export const styleSlicer = createSlice({
                         },
                         contentGrid: {
                             sx: {
-                                // borderStyle: 'solid',
-                                // borderColor: 'green',
-                                // position: state.deviceTypes.isMobile ? 'absolute': '',
                                 paddingTop: '5vh',
                                 paddingLeft: '2vw'
                             },
@@ -76,9 +71,40 @@ export const styleSlicer = createSlice({
                     project: {
                         backgroundColor: '#EAD7BB',
                         justifyContent: state.deviceTypes.isMobile ? 'normal' : 'space-evenly',
-                        alignItems: state.deviceTypes.isMobile ? 'normal' : 'center'
+                        alignItems: state.deviceTypes.isMobile ? 'normal' : 'center',
+                        height: projectSectionHeight
                     },
-                    model: {
+                    modelAndMedia: {
+                        paper: {
+                            square: true,
+                            elevation: 0,
+                            sx: {
+                                display: 'flex',
+                                alignItems: 'center',
+                                height: 50,
+                                pl: 2,
+                                backgroundColor: '#BCA37F',
+                            }
+                        },
+                        boxContent: {
+                            sx: {
+                                height: '50vh',
+                                maxWidth: 400,
+                                width: '100%',
+                                p: 2
+                            }
+                        },
+                        mobileStepper: {
+                            variant: 'text',
+                            position: 'static',
+                            sx: {
+                                backgroundColor: '#BCA37F'
+                            }
+                        },
+                        typography: {
+                            variant: contentVariantType,
+                            fontWeight: 'bold'
+                        },
                         backgroundColor: '#BCA37F',
                         userSelect:'none',
                         justifyContent: state.deviceTypes.isMobile ? 'normal' : 'space-evenly',
@@ -87,15 +113,26 @@ export const styleSlicer = createSlice({
                     sectionContentStyle: {
                         intro: {
                             typography: {
-                                variant: state.deviceTypes.isMobile ? 'inherit' : 'h6',
+                                variant: contentVariantType,
                                 paragraph: true
                             }
                         },
                         project: {
+                            typography: {
+                                variant: contentVariantType,
+                                paragraph: true
+                            },
+                            stepTitleTypography: {
+                                variant: state.deviceTypes.isMobile ? 'h6' : 'h5',
+                            },
+                            stepSubTitleTypography: {
+                                variant: state.deviceTypes.isMobile ? 'h7' : 'h6',
+                                color: '#5a5a5a'
+                            },
                         },
                         model: {
-                            width: state.deviceTypes.isMobile ? '90vw' : '40vw',
-                            height: state.deviceTypes.isMobile ? '50vh' : '70vh',
+                            width: state.deviceTypes.isMobile ? '90vw' : '45vw',
+                            height: state.deviceTypes.isMobile ? '50vh' : '100%',
                         },
                     }
                 },

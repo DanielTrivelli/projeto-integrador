@@ -9,9 +9,7 @@ function Intro(){
 
     const goTo = (event) => {
         event.preventDefault()
-        const link = event.target.href
-        console.log(link)
-        window.open(link, "_blank");
+        window.open(event.target.href, "_blank");
     }
 
     return(
