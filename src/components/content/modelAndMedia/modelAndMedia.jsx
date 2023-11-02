@@ -21,12 +21,12 @@ const steps = [
         component: <Photo src={'/projeto-integrador/static/images/prototipo_renderizado.png'} id={'render'} alt={'Modelo 3D do protótipo renderizado'}/>,
     },
     {
-        label: 'Visao superior do protótipo acoplado a bengala',
-        component: <Photo src={'/projeto-integrador/static/images/prototipo_vista_superior.jpg'} id={'superior'} alt={'Visao superior do protótipo acoplado a bengala'}/>,
+        label: 'Visão superior do protótipo acoplado a bengala',
+        component: <Photo src={'/projeto-integrador/static/images/prototipo_vista_superior.jpg'} id={'superior'} alt={'Visão superior do protótipo acoplado a bengala'}/>,
     },
     {
-        label: 'Visao lateral do protótipo acoplado a bengala',
-        component: <Photo src={'/projeto-integrador/static/images/prototipo_vista_lateral.jpg'} id={'lateral'} alt={'Visao lateral do protótipo acoplado a bengala'}/>,
+        label: 'Visão lateral do protótipo acoplado a bengala',
+        component: <Photo src={'/projeto-integrador/static/images/prototipo_vista_lateral.jpg'} id={'lateral'} alt={'Visão lateral do protótipo acoplado a bengala'}/>,
     },
 ];
 

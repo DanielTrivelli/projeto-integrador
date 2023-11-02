@@ -11,36 +11,52 @@ import Button from '@mui/material/Button';
 const steps = [
     {
         label: 'Software',
-        subtitle: 'Como o protótipo identifica um obstaculo?',
-        description: `Foi desenvolvido um código em C++ projetado para realizar um mapeamento da distância entre o
-        sensor e qualquer obstáculo. A proximidade do obstáculo é refletida na frequência das pulsações do motor de
-        vibração, que aumenta à medida que o obstáculo se aproxima e diminui à medida que se afasta. O código é
-        configurado para ler os dados do sensor e, com base nessa leitura, calcular um tempo de atraso apropriado,
-        a qual é diretamente relacionado à distância do obstáculo. Isso permite que o motor de vibração seja acionado
-        em uma frequência que os usuários possam sentir e interpretar, dando resposta tátil sobre a proximidade de
-        objetos.`,
+        subtitle: 'Como o protótipo identifica um obstáculo?',
+        description: (
+            <>
+                Foi desenvolvido um código em C++ projetado para realizar um mapeamento da distância entre o sensor e
+                qualquer obstáculo.
+                <br/>
+                A proximidade do obstáculo é refletida na frequência das pulsações do motor de vibração, que aumenta à
+                medida que o obstáculo se aproxima e diminui à medida que se afasta.
+                <br/>
+                O código é configurado para ler os dados do sensor e, com base nessa leitura, calcular um tempo de
+                atraso apropriado, a qual é diretamente relacionado à distância do obstáculo. Isso permite que o motor
+                de vibração seja acionado em uma frequência que os usuários possam sentir e interpretar, dando resposta
+                tátil sobre a proximidade de objetos.
+            </>
+        ),
     },
     {
         label: 'Hardware',
-        subtitle: 'Como funciona a parte elétrica?',
-        description: `A estrutura física do protótipo foi modelada e produzida em filamento de PLA branco, um
-        termoplástico biodegradável originado de recursos renováveis, como amido de milho ou cana-de-açúcar.
-        A produção do modelo 3D durou aproximadamente 3 horas para cada um dos dois módulos e permitiu a criação de uma
-        estrutura robusta que facilitou a integração do sensor, do motor de vibração, do Arduino e da bateria.
-        Vale ressaltar que os dois módulos foram projetados com um mecanismo que impede o desencaixe acidental,
-        garantindo estabilidade. Para isso, as duas peças foram configuradas de modo que fiquem conectadas efetuando o
-        encaixe de maneira segura.`,
+        subtitle: 'Quais componentes foram utilizados?',
+        description: (
+            <>
+                O hardware é composto por 4 (quatro) componentes eletrônicos:
+                <ol>
+                    <li>Arduino Uno</li>
+                    <li>Sensor a Laser VL53L1X</li>
+                    <li>Motor de Vibração</li>
+                    <li>Bateria de 9 Volts</li>
+                </ol>
+            </>
+        ),
     },
     {
-        label: 'Chassi',
+        label: 'Carcaça',
         subtitle: 'Onde a parte elétrica fica?',
-        description: `A estrutura física do protótipo foi modelada e produzida em filamento de PLA branco, um
-        termoplástico biodegradável originado de recursos renováveis, como amido de milho ou cana-de-açúcar.
-        A produção do modelo 3D durou aproximadamente 3 horas para cada um dos dois módulos e permitiu a criação de uma
-        estrutura robusta que facilitou a integração do sensor, do motor de vibração, do Arduino e da bateria.
-        Vale ressaltar que os dois módulos foram projetados com um mecanismo que impede o desencaixe acidental,
-        garantindo estabilidade. Para isso, as duas peças foram configuradas de modo que fiquem conectadas efetuando o
-        encaixe de maneira segura.`,
+        description: (
+            <>
+                A estrutura física do protótipo foi modelada e produzida em filamento de PLA branco, um termoplástico
+                biodegradável originado de recursos renováveis, como amido de milho ou cana-de-açúcar.
+                <br/>
+                A produção do modelo 3D durou aproximadamente 3 horas para cada um dos dois módulos e permitiu a
+                criação de uma estrutura robusta que facilitou a integração do sensor, do motor de vibração,
+                do Arduino e da bateria. Vale ressaltar que os dois módulos foram projetados com um mecanismo que
+                impede o desencaixe acidental, garantindo estabilidade. Para isso, as duas peças foram configuradas de
+                modo que fiquem conectadas efetuando o encaixe de maneira segura.
+            </>
+        ),
     },
 ];
 

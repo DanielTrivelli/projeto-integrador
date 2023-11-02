@@ -32,6 +32,12 @@ export const styleSlicer = createSlice({
                         backgroundColor: '#113946',
                     }
                 },
+                loader: {
+                    color: "#113946",
+                    ariaLabel: "triangle-loading",
+                    wrapperStyle: {},
+                    wrapperClassName: "",
+                },
                 sections: {
                     title: {
                         variant: state.deviceTypes.isMobile ? 'h5' : 'h2',

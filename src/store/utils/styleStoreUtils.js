@@ -7,7 +7,7 @@ const setContentTypographyVariant = (state) => {
 }
 
 const setProjectSectionHeight = (state) => {
-    let height = '102vh'
+    let height = '110vh'
     if(state.deviceTypes.isBrowser){
         height = state.windowSz.innerHeight >= 900 ? '100vh' : height
     }
