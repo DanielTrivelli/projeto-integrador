@@ -1,6 +1,5 @@
 import {inRange} from 'lodash'
 
-
 const getElementYAxis = (element) => {
     return [
         element.offsetTop,
